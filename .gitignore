@@ -1,0 +1,15 @@
+node_modules
+.expo
+dist
+build
+coverage
+*.log
+.DS_Store
+
+# Env files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local

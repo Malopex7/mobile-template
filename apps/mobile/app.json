@@ -1,0 +1,37 @@
+{
+    "expo": {
+        "name": "expo-express-monorepo",
+        "slug": "expo-express-monorepo",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "userInterfaceStyle": "light",
+        "splash": {
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.anonymous.expo-express-monorepo"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.anonymous.expoexpressmonorepo"
+        },
+        "web": {},
+        "plugins": [
+            "expo-router",
+            "expo-secure-store",
+            [
+                "expo-notifications",
+                {
+                    "color": "#ffffff"
+                }
+            ]
+        ],
+        "experiments": {
+            "typedRoutes": true
+        }
+    }
+}
