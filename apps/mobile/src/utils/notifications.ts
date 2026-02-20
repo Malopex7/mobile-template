@@ -47,7 +47,7 @@ export async function registerForPushNotificationsAsync() {
             // Send the token to the backend
             // await apiClient('/users/push-token', { method: 'POST', data: { pushToken: token } });
 
-        } catch (e: any) {
+        } catch (e: unknown) {
             console.error('Error fetching push token:', e);
         }
     } else {
