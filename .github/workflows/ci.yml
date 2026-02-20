@@ -32,6 +32,7 @@ jobs:
           node-version: 20
           cache: yarn
       - run: yarn install --frozen-lockfile
+      - run: yarn workspace @repo/shared build
       - run: yarn workspace @repo/api build
 
   backend-tests:
@@ -45,6 +46,7 @@ jobs:
           node-version: 20
           cache: yarn
       - run: yarn install --frozen-lockfile
+      - run: yarn workspace @repo/shared build
       - run: yarn workspace @repo/api test || true
         env:
           NODE_ENV: test
@@ -79,6 +81,7 @@ jobs:
           node-version: 20
           cache: yarn
       - run: yarn install --frozen-lockfile
+      - run: yarn workspace @repo/shared build
       - run: cd apps/mobile && npx tsc --noEmit || true
 
   frontend-build:
@@ -96,6 +99,7 @@ jobs:
           node-version: 20
           cache: yarn
       - run: yarn install --frozen-lockfile
+      - run: yarn workspace @repo/shared build
       - run: yarn workspace @repo/mobile expo export --platform android
 
   # ───────────── Integration ─────────────
