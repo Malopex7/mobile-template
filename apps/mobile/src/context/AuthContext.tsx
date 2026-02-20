@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getSecureToken, saveSecureToken, deleteSecureToken } from '../utils/secureStore';
 import { apiClient } from '../api/client';
 import { connectSocket, disconnectSocket } from '../utils/socket';
-import { registerForPushNotificationsAsync } from '../utils/notifications';
+// import { registerForPushNotificationsAsync } from '../utils/notifications';
 import { LoginInput, RegisterInput, AuthResponse } from '@repo/shared';
 
 type AuthContextType = {
