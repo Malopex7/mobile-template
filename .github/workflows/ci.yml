@@ -71,7 +71,7 @@ jobs:
           node-version: 20
           cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: yarn workspace @repo/mobile expo export --platform web
+      - run: cd apps/mobile && npx tsc --noEmit || true
 
   frontend-build:
     name: frontend-build

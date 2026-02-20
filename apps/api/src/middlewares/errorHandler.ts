@@ -5,7 +5,7 @@ export const errorHandler = (
     err: Error,
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     console.error(err);
 
@@ -17,7 +17,7 @@ export const errorHandler = (
     }
 
     // Mongoose duplicate key
-    if ((err as any).code === 11000) {
+    if ((err as unknown as Record<string, unknown>).code === 11000) {
         return res.status(400).json({
             success: false,
             message: 'Duplicate field value entered',
@@ -26,7 +26,8 @@ export const errorHandler = (
 
     // Mongoose validation error
     if (err.name === 'ValidationError') {
-        const message = Object.values((err as any).errors).map((val: any) => val.message).join(', ');
+        const mongooseErr = err as unknown as { errors: Record<string, { message: string }> };
+        const message = Object.values(mongooseErr.errors).map((val) => val.message).join(', ');
         return res.status(400).json({
             success: false,
             message,

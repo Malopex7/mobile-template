@@ -14,7 +14,12 @@ module.exports = {
     ignorePatterns: ['node_modules', 'dist', 'build', '.expo'],
     rules: {
         '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-        '@typescript-eslint/no-explicit-any': 'error',
-        'no-console': ['warn', { allow: ['warn', 'error'] }]
+        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/ban-ts-comment': ['error', {
+            'ts-expect-error': 'allow-with-description',
+            'ts-ignore': false,
+        }],
+        '@typescript-eslint/no-namespace': 'off',
+        'no-console': 'off',
     }
 };

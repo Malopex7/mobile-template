@@ -11,8 +11,9 @@ export default function Login() {
     const handleLogin = async () => {
         try {
             await login({ email, password });
-        } catch (e: any) {
-            Alert.alert('Login Failed', e.message || 'Unknown error');
+        } catch (e: unknown) {
+            const message = e instanceof Error ? e.message : 'Unknown error';
+            Alert.alert('Login Failed', message);
         }
     };
 

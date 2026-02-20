@@ -12,8 +12,9 @@ export default function Register() {
     const handleRegister = async () => {
         try {
             await register({ email, password, name });
-        } catch (e: any) {
-            Alert.alert('Registration Failed', e.message || 'Unknown error');
+        } catch (e: unknown) {
+            const message = e instanceof Error ? e.message : 'Unknown error';
+            Alert.alert('Registration Failed', message);
         }
     };
 

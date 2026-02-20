@@ -13,7 +13,7 @@ export const setupSockets = (io: Server) => {
 
         try {
             const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET);
-            // @ts-ignore
+            // @ts-expect-error -- attaching user to socket for downstream handlers
             socket.user = decoded; // Attach user info to socket
             next();
         } catch (err) {
@@ -22,7 +22,7 @@ export const setupSockets = (io: Server) => {
     });
 
     io.on(WS_EVENTS.CONNECT, (socket) => {
-        // @ts-ignore
+        // @ts-expect-error -- attaching user to socket for downstream handlers
         console.log(`🔌 Client connected: ${socket.id} (User: ${socket.user?.id})`);
 
         socket.on(WS_EVENTS.DISCONNECT, () => {

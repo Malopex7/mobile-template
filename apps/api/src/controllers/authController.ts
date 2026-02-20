@@ -10,7 +10,7 @@ import { RegisterSchema, LoginSchema, RefreshTokenSchema } from '@repo/shared';
 
 const generateAccessToken = (userId: string, roles: string[]) => {
     return jwt.sign({ id: userId, roles }, env.JWT_ACCESS_SECRET, {
-        expiresIn: env.JWT_ACCESS_EXPIRES_IN,
+        expiresIn: env.JWT_ACCESS_EXPIRES_IN as unknown as number,
     });
 };
 
@@ -126,7 +126,7 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
             return next(new AppError('Invalid or expired refresh token', 401));
         }
 
-        const user = session.user as any; // Fully populated user doc
+        const user = session.user as unknown as { _id: { toString(): string }; email: string; name: string; roles: string[] };
 
         // Token Rotation Setup: Single use - revoke old token
         session.revokedAt = new Date();
